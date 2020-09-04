@@ -25,6 +25,7 @@ import {
     Alert,
     Button,
     Card, CardTitle, CardBody, Gallery,
+    DescriptionList, DescriptionListGroup, DescriptionListTerm, DescriptionListDescription,
     Page, PageSection,
     Progress, ProgressVariant,
 } from '@patternfly/react-core';
@@ -449,16 +450,16 @@ class CurrentMetrics extends React.Component {
                 <Card>
                     <CardTitle>{ _("Disks") }</CardTitle>
                     <CardBody>
-                        <table className="info-table">
-                            <tbody>
-                                <tr>
-                                    <th>{ _("Reading:") }</th>
-                                    <td id="current-disks-read">{ cockpit.format_bytes_per_sec(this.state.disksRead) }</td>
-                                    <th>{ _("Writing:") }</th>
-                                    <td id="current-disks-write">{ cockpit.format_bytes_per_sec(this.state.disksWritten) }</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <DescriptionList isHorizontal columnModifier={{ lg: '2Col' }}>
+                            <DescriptionListGroup>
+                                <DescriptionListTerm>{ _("Reading:") }</DescriptionListTerm>
+                                <DescriptionListDescription id="current-disks-read">{ cockpit.format_bytes_per_sec(this.state.disksRead) }</DescriptionListDescription>
+                            </DescriptionListGroup>
+                            <DescriptionListGroup>
+                                <DescriptionListTerm>{ _("Writing:") }</DescriptionListTerm>
+                                <DescriptionListDescription id="current-disks-write">{ cockpit.format_bytes_per_sec(this.state.disksWritten) }</DescriptionListDescription>
+                            </DescriptionListGroup>
+                        </DescriptionList>
 
                         <div className="progress-stack"> {
                             this.state.mounts.map(info => <Progress
