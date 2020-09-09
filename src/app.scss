@@ -38,6 +38,16 @@
            padding-right: 1em;
        }
   }
+
+  .flex-card-contents {
+      display: flex;
+      flex-flow: column;
+      height: 100%;
+
+      .vertical-stretch {
+          flex-grow: 1;
+      }
+  }
 }
 
 .metrics {
